@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -7,7 +8,7 @@ public class lesson_7 {
 
     public static void Run() {
 
-        _scanner = new Scanner(System.in);
+        _scanner = new Scanner(System.in).useDelimiter("\n");
 
         System.out.println("Привет. Введи номер задачи");
         if (!_scanner.hasNextInt())
@@ -31,15 +32,21 @@ public class lesson_7 {
         }
     }
 
+    private static void Excercise1() {
+        strCheck1();
+        strCheck2();
+        strCheck3();
+        strCheck4();
+        strCheck5();
+        strCheck6();
+        strCheck7();
+        strCheck8();
+        strCheck9();
+    }
+
     public static void strCheck1() {
         System.out.println("Введите строку");
-
-        if(!_scanner.hasNextLine()){
-            System.out.println("Спасибо! Вы ввели пустую строку");
-            return;
-        }
-
-        String sc = _scanner.nextLine();
+        String sc = _scanner.next();
 
         int last = sc.length()-1;
         char ch = sc.charAt(last);
@@ -49,12 +56,7 @@ public class lesson_7 {
     public static void strCheck2() {
         System.out.println("Введите строку желательно заканчивающеюся на: !!! ");
 
-        if(!_scanner.hasNextLine()){
-            System.out.println("Спасибо! Вы ввели пустую строку");
-            return;
-        }
-
-        String sc = _scanner.nextLine();
+        String sc = _scanner.next();
 
         System.out.println(sc.endsWith("!!!"));
 
@@ -68,12 +70,8 @@ public class lesson_7 {
     public static void strCheck3() {
         System.out.println("Введите строку желательно начинающуюся на: I like");
 
-        if(!_scanner.hasNextLine()){
-            System.out.println("Спасибо! Вы ввели пустую строку");
-            return;
-        }
 
-        String sc = _scanner.nextLine();
+        String sc = _scanner.next();
 
         System.out.println(sc.startsWith("I like"));
 
@@ -86,11 +84,6 @@ public class lesson_7 {
 
     public static void strCheck4() {
         System.out.println("Введите строку желательно с подстрокой: Java");
-
-        if(!_scanner.hasNextLine()){
-            System.out.println("Спасибо! Вы ввели пустую строку");
-            return;
-        }
 
         String sc = _scanner.nextLine();
 
@@ -106,12 +99,7 @@ public class lesson_7 {
     public static void strCheck5() {
         System.out.println("Введите строку, желательно: I like Java!!!");
 
-        if(!_scanner.hasNextLine()){
-            System.out.println("Спасибо! Вы ввели пустую строку");
-            return;
-        }
-
-        String sc = _scanner.nextLine();
+        String sc = _scanner.next();
 
         int index = sc.lastIndexOf("Java");
 
@@ -127,12 +115,7 @@ public class lesson_7 {
     public static void strCheck6() {
         System.out.println("Введите строку, с символами: а");
 
-        if(!_scanner.hasNextLine()){
-            System.out.println("Спасибо! Вы ввели пустую строку");
-            return;
-        }
-
-        String sc = _scanner.nextLine();
+        String sc = _scanner.next();
 
         System.out.println(sc.replace('a', 'o'));
     }
@@ -140,12 +123,7 @@ public class lesson_7 {
     public static void strCheck7() {
         System.out.println("Введите строку");
 
-        if(!_scanner.hasNextLine()){
-            System.out.println("Спасибо! Вы ввели пустую строку");
-            return;
-        }
-
-        String sc = _scanner.nextLine();
+        String sc = _scanner.next();
 
         System.out.println(sc.toUpperCase());
     }
@@ -153,18 +131,63 @@ public class lesson_7 {
     public static void strCheck8() {
         System.out.println("Введите строку");
 
-        if(!_scanner.hasNextLine()){
-            System.out.println("Спасибо! Вы ввели пустую строку");
-            return;
-        }
-
-        String sc = _scanner.nextLine();
+        String sc = _scanner.next();
 
         System.out.println(sc.toLowerCase());
     }
 
     public static void strCheck9() {
         System.out.println("Введите строку I like Java!!!");
+
+        String sc = _scanner.next();
+
+        String java = "Java";
+        int index = sc.indexOf(java);
+
+        int lastIndex=index+java.length();
+        String myStr = sc.substring(0,index)+sc.substring(lastIndex, sc.length());
+
+        System.out.println(myStr);
     }
+
+    private static void Excercise2() {
+        System.out.println("Введите Имя");
+        String name = _scanner.next();
+
+        System.out.println("Введите Предмет");
+        String subject = _scanner.next();
+
+        System.out.println("Введите Оценку");
+        String grade = _scanner.next();
+        String result = String.format("Студент %1.15s Получил %1.3s по %1.10s", name, grade, subject);
+        System.out.printf(result);
+    }
+
+    // БЫЛО БОЛЬНО!
+
+    private static void Excercise3() {
+        System.out.println("Введите слова через пробел");
+        String input = _scanner.next();
+         String [] words = input.split(" ");
+         int [] degree= new int[words.length];
+        for (int i = 0; i < words.length; i++) {
+            int check = 1;
+            for (int k = 0; k < words[i].length()-1; k++) {
+                if(words[i].charAt(k) != words[i].charAt(k+1)){
+                    check++;
+                }
+            }
+            degree[i]=check;
+        }
+        int minDegree=Arrays.stream(degree).min().getAsInt();
+        for (int i = 0; i < degree.length; i++) {
+            if (degree[i] == minDegree) {
+                System.out.println(words[i]);
+                break;
+            }
+        }
+
+    }
+
 
 }
