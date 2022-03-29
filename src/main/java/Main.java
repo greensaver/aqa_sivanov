@@ -1,4 +1,5 @@
 import lesson_8.Cat;
+import lesson_8.Lion;
 
 public class Main {
 
@@ -10,9 +11,13 @@ public class Main {
         Cat cat1 = new Cat("Весна", 50, 5);
         Cat cat2 = new Cat("Евжорий", 100, 10);
 
+        Lion lion1 = new Lion("Simba", 300, 90);
+
         System.out.println(cat1.toString());
         System.out.println(cat1.equals(cat2));
 
+        lion1.roar();
+        lion1.chill();
 
     }
 

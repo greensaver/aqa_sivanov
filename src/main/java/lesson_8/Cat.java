@@ -1,7 +1,5 @@
 package lesson_8;
 
-import java.util.Objects;
-
 public class Cat {
 
     public String name;
@@ -9,7 +7,7 @@ public class Cat {
     public Integer weight;
 
     public Cat(String name) {
-
+        this.name = name;
     }
 
     public Cat(String name, Integer lengthCm, Integer weight) {
