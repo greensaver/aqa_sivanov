@@ -1,5 +1,5 @@
-import lesson_8.Cat;
 import lesson_8.Lion;
+import lesson_8.DomesticCat;
 
 public class Main {
 
@@ -8,13 +8,18 @@ public class Main {
         //lesson_5.Run();
         //lesson_6.Run();
         //lesson_7.Run();
-        Cat cat1 = new Cat("Весна", 50, 5);
-        Cat cat2 = new Cat("Евжорий", 100, 10);
+        DomesticCat cat1 = new DomesticCat("Весна", 50, 5);
+        DomesticCat cat2 = new DomesticCat("Евжорий", 100, 10);
 
         Lion lion1 = new Lion("Simba", 300, 90);
 
+
         System.out.println(cat1.toString());
         System.out.println(cat1.equals(cat2));
+
+        System.out.println(cat2.toString());
+        cat2.rename("Жорий");
+        System.out.println(cat2.toString());
 
         lion1.roar();
         lion1.chill();

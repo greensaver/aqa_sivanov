@@ -1,10 +1,9 @@
 package lesson_8;
 
-public class Cat {
-
-    public String name;
-    public Integer lengthCm;
-    public Integer weight;
+abstract class Cat {
+    private String name;
+    private Integer lengthCm;
+    private Integer weight;
 
     public Cat(String name) {
         this.name = name;
@@ -14,6 +13,16 @@ public class Cat {
            this.name = name;
            this.lengthCm = lengthCm;
            this.weight = weight;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    protected void setName(String newName) {
+        if (newName.isEmpty())
+            return;
+        name=newName;
     }
 
     @Override
