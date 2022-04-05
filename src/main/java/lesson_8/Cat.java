@@ -1,7 +1,7 @@
 package lesson_8;
 
 abstract class Cat {
-    private String name;
+    public String name;
     private Integer lengthCm;
     private Integer weight;
 
@@ -13,16 +13,6 @@ abstract class Cat {
            this.name = name;
            this.lengthCm = lengthCm;
            this.weight = weight;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    protected void setName(String newName) {
-        if (newName.isEmpty())
-            return;
-        name=newName;
     }
 
     @Override
