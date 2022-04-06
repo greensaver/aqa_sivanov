@@ -6,13 +6,13 @@ import java.util.Arrays;
 public class Student {
 
     public String name;
-    private ArrayList<Subject> subjects;
-    private ArrayList<DaysOfWeek> learningDays;
+    private Subject[] subjects;
+    private DaysOfWeek[] learningDays;
 
     public Student(String name) {
         this.name = name;
-        this.subjects = new ArrayList<Subject>();
-        this.learningDays = new ArrayList<DaysOfWeek>();
+        this.subjects = new Subject[10];
+        this.learningDays = new DaysOfWeek[7];
     }
 
     public void whenDoILearn(){
@@ -20,15 +20,25 @@ public class Student {
     }
 
     public void addLearningDay(DaysOfWeek day){
-        if (learningDays.contains(day))
-            return;
-        learningDays.add(day);
+
+        for (int i = 0; i < learningDays.length; i++) {
+            if (learningDays[i] == null) {
+                learningDays[i] = day;
+                return;
+            }
+        }
+
     }
 
     public void addSubject(Subject subject){
         if (subject == null)
             return;
-        subjects.add(subject);
+        for (int i = 0; i < subjects.length; i++) {
+            if (subjects[i] == null) {
+                subjects[i] = subject;
+                return;
+            }
+        }
     }
 
     public boolean isAbleToLearn(SubjectName subjectName){

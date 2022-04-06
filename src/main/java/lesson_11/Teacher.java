@@ -6,25 +6,32 @@ public class Teacher {
 
     private final String name;
     private final String jobTitle;
-    private ArrayList<Student> students;
+    private Student[] students;
 
     public Teacher(String name, String jobTitle) {
         this.name = name;
         this.jobTitle = jobTitle;
-        this.students = new ArrayList<Student>();
+        this.students = new Student[10];
     }
 
     public void addStudent(Student student){
         if (student == null)
             return;
-        students.add(student);
+
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] == null) {
+                students[i] = student;
+                return;
+            }
+        }
+
     }
 
     public void teach(SubjectName subjectName){
         System.out.println("урок " + subjectName + " начался");
         for (Student student:students){
 
-            if (student.isAbleToLearn(subjectName)) {
+            if (student!=null&&student.isAbleToLearn(subjectName)) {
                 student.learn(subjectName);
             }
 
