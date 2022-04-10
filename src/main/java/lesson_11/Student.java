@@ -9,15 +9,21 @@ public class Student {
     private Set<Subject> subjects;
     private DaysOfWeek[] learningDays;
 
-    public Student(String name) {
+    public Student(String name, Set<Subject> subjects) {
         this.name = name;
-        this.subjects = new HashSet<>();
+        this.subjects = subjects;
         this.learningDays = new DaysOfWeek[7];
     }
 
     public void whenDoILearn(){
-
-        System.out.println("Привет, меня зовут " + name + ", я учусь по " + learningDays);
+        String days=new String();
+        for(DaysOfWeek day:learningDays)
+        {
+            if (day==null)
+                continue;
+            days+=day+" ";
+        }
+        System.out.println("Привет, меня зовут " + name + ", я учусь по " + days);
     }
 
     public void addLearningDay(DaysOfWeek day){
@@ -29,12 +35,6 @@ public class Student {
             }
         }
 
-    }
-
-    public void addSubject(Subject subject){
-        if (subject == null)
-            return;
-        subjects.add(subject);
     }
 
     public boolean isAbleToLearn(SubjectName subjectName){

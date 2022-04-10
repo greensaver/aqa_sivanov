@@ -23,4 +23,12 @@ public class Subject {
     public int hashCode() {
         return Objects.hash(Name, AmountOfHours);
     }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "Name=" + Name +
+                ", AmountOfHours=" + AmountOfHours +
+                '}';
+    }
 }
