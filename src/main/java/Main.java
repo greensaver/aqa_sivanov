@@ -29,7 +29,7 @@ public class Main {
         contest.start();
         contest.getWinner();*/
 
-        /*Subject subject1 = new Subject(SubjectName.CHEMISTRY, 96);
+        Subject subject1 = new Subject(SubjectName.CHEMISTRY, 96);
         Subject subject2 = new Subject(SubjectName.MATH, 1);
         Subject subject3 = new Subject(SubjectName.HISTORY, 86);
         Subject subject4 = new Subject(SubjectName.LITERATURE, 15);
@@ -58,9 +58,9 @@ public class Main {
         teacher.addStudent(student1);
         teacher.addStudent(student2);
 
-        teacher.teach(SubjectName.CHEMISTRY);*/
+        teacher.teach(SubjectName.CHEMISTRY);
 
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
 
         System.out.println("Введите логин");
         String login = scanner.next();
@@ -72,7 +72,7 @@ public class Main {
         boolean result = CredentialsChecker.Check(login,password,passwordConfirmation);
 
         if (!result)
-            System.out.println("Что-то пошло не так");
+            System.out.println("Что-то пошло не так");*/
 
 
 
