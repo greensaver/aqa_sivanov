@@ -70,10 +70,9 @@ public class Main {
         String passwordConfirmation = scanner.next();
 
         boolean result = CredentialsChecker.Check(login,password,passwordConfirmation);
-
-        if (!result)
+        if (!result){
             System.out.println("Что-то пошло не так");
-
+        }
 
 
 
