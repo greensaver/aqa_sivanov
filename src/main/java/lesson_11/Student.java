@@ -1,22 +1,29 @@
 package lesson_11;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Student {
 
     public String name;
-    private Subject[] subjects;
+    private Set<Subject> subjects;
     private DaysOfWeek[] learningDays;
 
-    public Student(String name) {
+    public Student(String name, Set<Subject> subjects) {
         this.name = name;
-        this.subjects = new Subject[10];
+        this.subjects = subjects;
         this.learningDays = new DaysOfWeek[7];
     }
 
     public void whenDoILearn(){
-        System.out.println("Привет, меня зовут " + name + ", я учусь по " + learningDays);
+        String days=new String();
+        for(DaysOfWeek day:learningDays)
+        {
+            if (day==null)
+                continue;
+            days+=day+" ";
+        }
+        System.out.println("Привет, меня зовут " + name + ", я учусь по " + days);
     }
 
     public void addLearningDay(DaysOfWeek day){
@@ -28,17 +35,6 @@ public class Student {
             }
         }
 
-    }
-
-    public void addSubject(Subject subject){
-        if (subject == null)
-            return;
-        for (int i = 0; i < subjects.length; i++) {
-            if (subjects[i] == null) {
-                subjects[i] = subject;
-                return;
-            }
-        }
     }
 
     public boolean isAbleToLearn(SubjectName subjectName){
