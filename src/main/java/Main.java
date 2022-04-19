@@ -1,43 +1,29 @@
-import lesson_11.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import lesson_15.Product;
+import lesson_15.ProductMarket;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        Subject subject1 = new Subject(SubjectName.CHEMISTRY, 96);
-        Subject subject2 = new Subject(SubjectName.MATH, 1);
-        Subject subject3 = new Subject(SubjectName.HISTORY, 86);
-        Subject subject4 = new Subject(SubjectName.LITERATURE, 15);
-        Subject subject5 = new Subject(SubjectName.PHYSICS, 96);
+        Product product1 = new Product("Potatoes", 5);
+        Product product2 = new Product("Rotten Banana", -1);
+        Product product3 = new Product("Tomatoes", 15);
+        Product product4 = new Product("Pasta", 20);
+        Product product5 = new Product("Cucumber", 2);
 
-        Set<Subject> subjects1=new HashSet<>();
-        subjects1.add(subject1);
-        subjects1.add(subject2);
-        subjects1.add(subject3);
-        subjects1.add(subject4);
-        Student student1 = new Student("Бiба", subjects1);
+        List<Product> products = List.of(product1, product2, product3, product4, product5);
+        ProductMarket market = new ProductMarket(products);
 
-        student1.addLearningDay(DaysOfWeek.Monday);
-        student1.addLearningDay(DaysOfWeek.Wednesday);
-        student1.whenDoILearn();
-
-        Set<Subject> subjects2=new HashSet<>();
-        subjects2.add(subject1);
-        subjects2.add(subject2);
-        subjects2.add(subject3);
-        subjects2.add(subject5);
-        Student student2 = new Student("Боба", subjects2);
-
-        student2.addLearningDay(DaysOfWeek.Thursday);
-        student2.addLearningDay(DaysOfWeek.Wednesday);
-        student2.whenDoILearn();
-
-        Teacher teacher = new Teacher("Петрович", "Доцент кафедри ДПЮ");
-        teacher.addStudent(student1);
-        teacher.addStudent(student2);
-
-        teacher.teach(SubjectName.CHEMISTRY);
+        System.out.println("Имена продуктов ");
+        market.getProductNames().forEach(System.out::println);
+        System.out.println("Имена продуктов по алфавиту ");
+        market.getProductNamesSorted().forEach(System.out::println);
+        System.out.println("Цены продуктов больше 10 ");
+        market.getExpensiveProducts().forEach(System.out::println);
+        System.out.println("Цены продуктов меньше 0 ");
+        market.getCheapProducts().forEach(System.out::println);
+        System.out.println("Цены продуктов в String ");
+        market.getProductPricesAsString().forEach(System.out::println);
     }
 }
