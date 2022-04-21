@@ -1,16 +1,17 @@
 package lesson_15;
 
-import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class ProductMarket {
     private List<Product> products;
-
-    public ProductMarket(List<Product> products) {
-        this.products = products;
-    }
 
     public List<String> getProductNames() {
         return products.stream()
