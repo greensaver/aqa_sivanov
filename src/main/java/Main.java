@@ -1,4 +1,3 @@
-
 import lesson_15.Product;
 import lesson_15.ProductMarket;
 import java.util.List;
@@ -6,6 +5,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+
         Product product1 = new Product("Potatoes", 5);
         Product product2 = new Product("Rotten Banana", -1);
         Product product3 = new Product("Tomatoes", 15);
@@ -25,5 +25,6 @@ public class Main {
         market.getCheapProducts().forEach(System.out::println);
         System.out.println("Цены продуктов в String ");
         market.getProductPricesAsString().forEach(System.out::println);
+
     }
 }
