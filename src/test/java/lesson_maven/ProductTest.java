@@ -2,14 +2,32 @@ package lesson_maven;
 
 import lesson_15.Product;
 import lesson_15.ProductMarket;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 public class ProductTest {
-    @Test
+
+    private List<Product> products;
+
+    @BeforeSuite
+    public void setProduct(){
+        Product product3 = new Product("Tomatoes", 15);
+        Product product1 = new Product("Potatoes", 5);
+        Product product2 = new Product("Rotten Banana", -1);
+        products = List.of(product1, product2, product3);
+    }
+
+    @AfterMethod
+    public void testMethod(){
+        System.out.println("method finished");
+    }
+
+    @Test(groups = {"smoke", "regression"})
     public void checkProductNames(){
         Product product = new Product("Potatoes", 5);
         ProductMarket market = new ProductMarket(List.of(product));
@@ -17,7 +35,7 @@ public class ProductTest {
         assertEquals(product.getName(), name, "Unexpected product name");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void checkProductNamesSorted(){
         Product product3 = new Product("Tomatoes", 15);
         Product product1 = new Product("Potatoes", 5);
@@ -31,11 +49,7 @@ public class ProductTest {
 
     @Test
     public void checkExpensiveProducts(){
-        Product product3 = new Product("Tomatoes", 15);
-        Product product1 = new Product("Potatoes", 5);
-        Product product2 = new Product("Rotten Banana", -1);
-
-        ProductMarket market = new ProductMarket(List.of(product1, product2, product3));
+        ProductMarket market = new ProductMarket(products);
         List<Integer> expected = List.of(15);
         List<Integer> result = market.getExpensiveProducts();
         assertEquals(expected, result, "Unexpected product price");
@@ -43,11 +57,7 @@ public class ProductTest {
 
     @Test
     public void checkCheapProducts(){
-        Product product3 = new Product("Tomatoes", 15);
-        Product product1 = new Product("Potatoes", 5);
-        Product product2 = new Product("Rotten Banana", -1);
-
-        ProductMarket market = new ProductMarket(List.of(product1, product2, product3));
+        ProductMarket market = new ProductMarket(products);
         List<Integer> expected = List.of(-1);
         List<Integer> result = market.getCheapProducts();
         assertEquals(expected, result, "Unexpected product price");
@@ -55,12 +65,8 @@ public class ProductTest {
 
     @Test
     public void checkProductPricesAsString(){
-        Product product1 = new Product("Tomatoes", 15);
-        Product product2 = new Product("Potatoes", 5);
-        Product product3 = new Product("Rotten Banana", -1);
-
-        ProductMarket market = new ProductMarket(List.of(product1, product2, product3));
-        List<String> expected = List.of("15", "5", "-1");
+        ProductMarket market = new ProductMarket(products);
+        List<String> expected = List.of("5", "-1", "15");
         List<String> result = market.getProductPricesAsString();
         assertEquals(expected, result, "Unexpected product price (not in String)");
     }
