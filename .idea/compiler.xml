@@ -9,7 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="aqa_sivanov" />
         <module name="untitled3" />
+        <module name="aqa_sivanov_test_ng" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="aqa_sivanov" options="" />
+    </option>
   </component>
 </project>
